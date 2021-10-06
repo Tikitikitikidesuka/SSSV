@@ -28,10 +28,20 @@ func init(newType):
 
 func setVisited(newVisited:bool):
 	visited = newVisited
-	if newVisited:
-		modulate = VCOLOR
+	updateColor()
 
 func setChecking(newChecking:bool):
 	checking = newChecking
-	if newChecking:
+	updateColor()
+
+func updateColor():
+	if checking:
 		modulate = CCOLOR
+	elif visited:
+		modulate = VCOLOR
+	else:
+		match type:
+			Type.PATH:
+				modulate = PCOLOR
+			Type.WALL:
+				modulate = WCOLOR
