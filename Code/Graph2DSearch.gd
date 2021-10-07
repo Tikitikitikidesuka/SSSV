@@ -25,6 +25,7 @@ func nextAmplitud():
 	var lastNode = graph2D.getNode(lastNodePos)
 	if lastNode.type == lastNode.Type.END or len(CP) == 0:
 		showFinished(CP.pop_front())
+		graph2D.uncheckNode()
 		CP = []
 		finished = true
 	else:
@@ -40,7 +41,7 @@ func nextAmplitud():
 			else:
 				print("nothing")
 				CP.pop_front()
-	return !finished
+	return not finished
 
 func showPath(path, final = false):
 	for node in prevTempPath:
