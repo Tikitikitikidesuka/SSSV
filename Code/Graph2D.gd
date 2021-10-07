@@ -22,8 +22,9 @@ func init(newSize:Vector2, data:Array):
 	for y in newSize.y:
 		var row = []
 		for x in newSize.x:
+			print(y*newSize.y +x)
 			var newNode = G2DNode.instance()
-			var type = data[y*newSize.y +x]
+			var type = data[y*newSize.x +x]
 			var pos = Vector2(x, y)
 			match type:
 				newNode.Type.START:
