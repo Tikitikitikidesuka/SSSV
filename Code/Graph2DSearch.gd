@@ -4,6 +4,7 @@ extends Node
 var graph2D
 var CP = []
 var finished : bool
+var prevTempPath : Array
 
 func _init(newGraph2D):
 	graph2D = newGraph2D
@@ -18,28 +19,39 @@ func initAmplitud():
 
 func nextAmplitud():
 	if finished:
-		return true
+		return false
 	var path = CP.front()
 	var lastNodePos = path.back()
-	#print(lastNode)
 	var lastNode = graph2D.getNode(lastNodePos)
-	if lastNode.type == lastNode.Type.END:
+	if lastNode.type == lastNode.Type.END or len(CP) == 0:
 		showFinished(CP.pop_front())
 		CP = []
 		finished = true
-		return true
 	else:
-		var neighbours = graph2D.getUnvisitedNeighbours(lastNodePos)
-		#print(neighbours)
-		if len(neighbours) > 0:
-			graph2D.checkNode(lastNodePos)
-			graph2D.getNode(neighbours.front()).setVisited(true)
-			CP.push_back(path.duplicate() + [neighbours.front()])
-			#print(CP)
+		showPath(path)
+		if graph2D.checkingNode != lastNodePos:
+				graph2D.checkNode(lastNodePos)
 		else:
-			CP.pop_front()
-			#print(CP)
+			var neighbours = graph2D.getUnvisitedNeighbours(lastNodePos)
+			if len(neighbours) > 0:
+				graph2D.getNode(neighbours.front()).setVisited(true)
+				CP.push_back(path.duplicate() + [neighbours.front()])
+				print("something")
+			else:
+				print("nothing")
+				CP.pop_front()
+	return !finished
+
+func showPath(path, final = false):
+	for node in prevTempPath:
+		graph2D.getNode(node).tempPath = false
+	prevTempPath = path
+	if not final:
+		for node in path:
+			graph2D.getNode(node).tempPath = true
+	else:
+		for node in path:
+			graph2D.getNode(node).finalPath = true
 
 func showFinished(path):
-	for node in path:
-		graph2D.getNode(node).finalPath = true
+	showPath(path, true)

@@ -9,6 +9,7 @@ const PCOLOR = Color(0.95 ,0.95 ,0.95 )
 const WCOLOR = Color(0.1  ,0.1  ,0.1  )
 const SCOLOR = Color(1    ,0.53 ,0.25 )
 const ECOLOR = Color(0.9  ,0.25 ,1    )
+const TCOLOR = Color(0.25 ,1    ,0.65 )
 
 enum Type {START, END, PATH, WALL}
 
@@ -16,6 +17,7 @@ var type : int = -1
 var visited = false setget setVisited
 var checking = false setget setChecking
 var finalPath = false setget setFinalPath
+var tempPath = false setget setTempPath
 
 
 func _ready():
@@ -46,6 +48,10 @@ func setFinalPath(newFinalPath:bool):
 	finalPath = newFinalPath
 	updateColor()
 
+func setTempPath(newTempPath:bool):
+	tempPath = newTempPath
+	updateColor()
+
 func updateColor():
 	if type == Type.START or type == Type.END:
 		return
@@ -53,6 +59,8 @@ func updateColor():
 		modulate = FCOLOR
 	elif checking:
 		modulate = CCOLOR
+	elif tempPath:
+		modulate = TCOLOR
 	elif visited:
 		modulate = VCOLOR
 	else:
