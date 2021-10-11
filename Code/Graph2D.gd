@@ -13,6 +13,8 @@ var end : Vector2
 var checking = false
 var checkingNode : Vector2
 
+var shownPath : Array = []
+
 
 func _ready():
 	pass
@@ -22,7 +24,6 @@ func init(newSize:Vector2, data:Array):
 	for y in newSize.y:
 		var row = []
 		for x in newSize.x:
-			print(y*newSize.y +x)
 			var newNode = G2DNode.instance()
 			var type = data[y*newSize.x +x]
 			var pos = Vector2(x, y)
@@ -83,3 +84,19 @@ func getUnvisitedNeighbours(pos:Vector2):
 
 func getAllNeighbours(pos:Vector2):
 	return getNeighbours(pos, false)
+
+func showPath(path, final = false):
+	for node in shownPath:
+		getNode(node).tempPath = false
+	shownPath = path
+	if not final:
+		for node in path:
+			getNode(node).tempPath = true
+	else:
+		for node in path:
+			getNode(node).finalPath = true
+
+func hidePath():
+	for node in shownPath:
+		getNode(node).tempPath = false
+	shownPath = []
