@@ -13,7 +13,7 @@ var data = [
 	3, 3, 2, 2, 2, 3, 2, 3,
 	3, 3, 2, 3, 2, 2, 3, 3,
 	3, 3, 2, 2, 3, 2, 2, 1,
-	3, 2, 2, 2, 2, 2, 2, 3,
+	3, 2, 2, 2, 3, 2, 2, 3,
 	3, 3, 3, 3, 3, 3, 3, 3
 	]
 
@@ -25,16 +25,16 @@ func _ready():
 	graph2D.init(Vector2(8,10), data)
 	add_child(graph2D)
 	searcher = Graph2DSearch.new(graph2D)
-	searcher.initAmplitud()
+	searcher.initAlgorithm()
 
 var timeCntr = 0.0
 var timeInterval = 0.1
 
 func _process(delta):
 	if Input.is_action_just_pressed("next"):
-		searcher.nextAmplitud()
+		searcher.nextProfundidad()
 	elif Input.is_action_pressed("auto_next"):
 		timeCntr += delta
 		if timeCntr > timeInterval:
-			searcher.nextAmplitud()
+			searcher.nextProfundidad()
 			timeCntr = 0.0
