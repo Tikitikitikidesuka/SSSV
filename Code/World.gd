@@ -6,8 +6,11 @@ const SEARCH_ALGORITHMS_DIR = "res://Code/SeachAlgorithms/"
 var Graph2D = preload("res://Scenes/Graph2D.tscn")
 var Graph2DSearch = preload("res://Code/Graph2DSearch.gd")
 
-var algorithm = "Best_First"
+var algorithm = "Branch_And_Bound"
 
+var playing = false
+
+var menuHeight = 100
 var tileSize = 64
 var gridTiles = Vector2(8,10)
 var data = [
@@ -39,8 +42,19 @@ func _ready():
 	if textSize.x > windowSize.x:
 		font.size = windowSize.x * font.size / textSize.x
 	$AlgorithmLabel.text = algorithmDisplayName
-	
 	windowSize.y += textSize.y
+	
+	$Menu.set_position(Vector2(0, windowSize.y))
+	$Menu.fit_height(menuHeight)
+	$Menu.margin_top = 10
+	$Menu.margin_bottom = 10
+	$Menu.center_vertically(windowSize.x)
+	windowSize.y += menuHeight
+	
+	$Menu.connect("pause", self, "_on_Menu_pause")
+	$Menu.connect("play", self, "_on_Menu_play")
+	$Menu.connect("next", self, "_on_Menu_next")
+	
 	graph2D.position.y += textSize.y
 	OS.window_resizable = false
 	OS.window_size = windowSize
@@ -53,10 +67,20 @@ var timeCntr = 0.0
 var timeInterval = 0.1
 
 func _process(delta):
-	if Input.is_action_just_pressed("next"):
-		searcher.nextStep()
-	elif Input.is_action_pressed("auto_next"):
+	if playing:
 		timeCntr += delta
 		if timeCntr > timeInterval:
 			searcher.nextStep()
 			timeCntr = 0.0
+
+func _on_Menu_pause():
+	print("pause")
+	playing = false
+
+func _on_Menu_play():
+	print("play")
+	playing = true
+
+func _on_Menu_next():
+	if not playing:
+		searcher.nextStep()
