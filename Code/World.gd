@@ -6,9 +6,9 @@ const SEARCH_ALGORITHMS_DIR = "res://Code/SeachAlgorithms/"
 var Graph2D = preload("res://Scenes/Graph2D.tscn")
 var Graph2DSearch = preload("res://Code/Graph2DSearch.gd")
 
-var algorithm = "A*"
+var algorithm = "Best_First"
 
-var tileSize = 5
+var tileSize = 64
 var gridTiles = Vector2(8,10)
 var data = [
 	3, 3, 3, 3, 3, 3, 3, 3,
@@ -30,7 +30,21 @@ func _ready():
 	graph2D = Graph2D.instance()
 	graph2D.setTileSize(tileSize)
 	graph2D.init(gridTiles, data)
-	OS.window_size = gridTiles * tileSize
+	
+	var windowSize = gridTiles * tileSize
+	
+	var algorithmDisplayName = algorithm.replace("_", " ")
+	var font = $AlgorithmLabel.get_font("font")
+	var textSize = font.get_string_size(algorithmDisplayName)
+	if textSize.x > windowSize.x:
+		font.size = windowSize.x * font.size / textSize.x
+	$AlgorithmLabel.text = algorithmDisplayName
+	
+	windowSize.y += textSize.y
+	graph2D.position.y += textSize.y
+	OS.window_resizable = false
+	OS.window_size = windowSize
+	
 	add_child(graph2D)
 	searcher = Graph2DSearch.new(graph2D)
 	searcher.initAlgorithm(load(SEARCH_ALGORITHMS_DIR + algorithm + ".gd"))
