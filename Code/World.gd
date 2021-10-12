@@ -6,7 +6,7 @@ const SEARCH_ALGORITHMS_DIR = "res://Code/SeachAlgorithms/"
 var Graph2D = preload("res://Scenes/Graph2D.tscn")
 var Graph2DSearch = preload("res://Code/Graph2DSearch.gd")
 
-var algorithm = "HillClimbing"
+var algorithm = "A*"
 
 var data = [
 	3, 3, 3, 3, 3, 3, 3, 3,

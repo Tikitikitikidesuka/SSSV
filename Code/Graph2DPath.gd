@@ -1,6 +1,6 @@
 extends Object
 
-var weight : float = 0
+var cost : float = 0
 var heuristic : float = 0
 var list = []
 
@@ -16,7 +16,7 @@ func getList():
 func duplicate():
 	var newPath = get_script().new()
 	newPath.list = list.duplicate()
-	newPath.weight = weight;
+	newPath.cost = cost;
 	return newPath
 
 func addPath(extraPath):
