@@ -3,7 +3,9 @@ extends Node2D
 
 const G2DNode = preload("res://Scenes/Graph2DNode.tscn")
 const TILE_SIZE = 32
-const SCALE = 2
+
+var screenTileSize = 32 setget setTileSize
+var tileScale = 2
 
 var size : Vector2
 var matrix : Array
@@ -33,11 +35,15 @@ func init(newSize:Vector2, data:Array):
 				newNode.Type.END:
 					end = pos
 			newNode.init(type)
-			newNode.position = pos * TILE_SIZE * SCALE
-			newNode.scale = Vector2(SCALE, SCALE)
+			newNode.position = pos * TILE_SIZE * tileScale
+			newNode.scale = Vector2(tileScale, tileScale)
 			add_child(newNode)
 			row.push_back(newNode)
 		matrix.push_back(row)
+
+func setTileSize(newSize:int):
+	tileScale = screenTileSize / TILE_SIZE
+	screenTileSize = newSize
 
 func getNode(pos:Vector2):
 	return matrix[pos.y][pos.x]

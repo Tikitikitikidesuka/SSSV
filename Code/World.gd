@@ -8,6 +8,8 @@ var Graph2DSearch = preload("res://Code/Graph2DSearch.gd")
 
 var algorithm = "A*"
 
+var tileSize = 64
+var gridTiles = Vector2(8,10)
 var data = [
 	3, 3, 3, 3, 3, 3, 3, 3,
 	3, 2, 2, 2, 3, 2, 3, 3,
@@ -26,7 +28,9 @@ var searcher
 
 func _ready():
 	graph2D = Graph2D.instance()
-	graph2D.init(Vector2(8,10), data)
+	graph2D.init(gridTiles, data)
+	graph2D.setTileSize(tileSize)
+	OS.window_size = gridTiles * tileSize
 	add_child(graph2D)
 	searcher = Graph2DSearch.new(graph2D)
 	searcher.initAlgorithm(load(SEARCH_ALGORITHMS_DIR + algorithm + ".gd"))
