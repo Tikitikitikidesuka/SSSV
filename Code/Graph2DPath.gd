@@ -1,6 +1,7 @@
 extends Object
 
 var weight : float = 0
+var heuristic : float = 0
 var list = []
 
 func addNode(newNode:Vector2):

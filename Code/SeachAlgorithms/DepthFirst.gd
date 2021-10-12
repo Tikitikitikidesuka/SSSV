@@ -1,13 +1,8 @@
-extends Object
+extends "res://Code/SeachAlgorithms/BaseSearchAlgorithm.gd"
 
 
-var graph2D
-
-func _ready():
+func _init(newGraph2D).(newGraph2D):
 	pass
-
-func _init(newGraph2D):
-	graph2D = newGraph2D
 
 func expand(CP, path):
 	var neighbours = graph2D.getUnvisitedNeighbours(path.getLastNode())
