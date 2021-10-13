@@ -2,7 +2,7 @@ extends Node2D
 
 
 const OG_HEIGHT = 128
-const OG_WIDTH = 512
+const OG_WIDTH = 728
 
 var real_position = position setget set_position
 var real_height = OG_HEIGHT setget fit_height
@@ -13,14 +13,19 @@ var margin_bottom = 0 setget set_bottom_margin
 var margin_left = 0 setget set_left_margin
 var margin_right = 0 setget set_right_margin
 
+signal reset
 signal pause
 signal play
 signal next
 
 func _ready():
+	$ResetButton.connect("released", self, "_on_Reset_pressed")
 	$PauseButton.connect("released", self, "_on_Pause_pressed")
 	$PlayButton.connect("released", self, "_on_Play_pressed")
 	$NextButton.connect("released", self, "_on_Next_pressed")
+
+func _on_Reset_pressed():
+	emit_signal("reset")
 
 func _on_Pause_pressed():
 	emit_signal("pause")

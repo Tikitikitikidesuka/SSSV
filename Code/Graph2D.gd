@@ -106,3 +106,8 @@ func hidePath():
 	for node in shownPath:
 		getNode(node).tempPath = false
 	shownPath = []
+
+func reset():
+	for row in matrix:
+		for node in row:
+			node.reset()

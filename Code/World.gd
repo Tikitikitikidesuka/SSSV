@@ -12,17 +12,16 @@ var playing = false
 
 var menuHeight = 100
 var tileSize = 64
-var gridTiles = Vector2(8,10)
+var gridTiles = Vector2(8,9)
 var data = [
 	3, 3, 3, 3, 3, 3, 3, 3,
-	3, 2, 2, 2, 3, 2, 3, 3,
-	0, 2, 3, 2, 2, 2, 2, 3,
-	3, 2, 3, 3, 2, 3, 2, 3,
-	3, 2, 2, 3, 2, 3, 2, 3,
+	0, 2, 2, 2, 3, 2, 3, 3,
+	3, 2, 3, 2, 2, 2, 2, 3,
+	3, 2, 3, 3, 3, 3, 2, 3,
+	3, 2, 2, 3, 2, 2, 2, 3,
 	3, 3, 2, 2, 2, 3, 2, 3,
 	3, 3, 2, 3, 2, 2, 3, 3,
 	3, 3, 2, 2, 3, 2, 2, 1,
-	3, 2, 2, 2, 3, 2, 2, 3,
 	3, 3, 3, 3, 3, 3, 3, 3
 	]
 
@@ -51,6 +50,7 @@ func _ready():
 	$Menu.center_vertically(windowSize.x)
 	windowSize.y += menuHeight
 	
+	$Menu.connect("reset", self, "_on_Menu_reset")
 	$Menu.connect("pause", self, "_on_Menu_pause")
 	$Menu.connect("play", self, "_on_Menu_play")
 	$Menu.connect("next", self, "_on_Menu_next")
@@ -72,6 +72,12 @@ func _process(delta):
 		if timeCntr > timeInterval:
 			searcher.nextStep()
 			timeCntr = 0.0
+
+func _on_Menu_reset():
+	print("reset")
+	graph2D.reset()
+	searcher.reset()
+	playing = false
 
 func _on_Menu_pause():
 	print("pause")

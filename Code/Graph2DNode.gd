@@ -52,6 +52,13 @@ func setTempPath(newTempPath:bool):
 	tempPath = newTempPath
 	updateColor()
 
+func reset():
+	visited = false
+	checking = false
+	finalPath = false
+	tempPath = false
+	updateColor()
+
 func updateColor():
 	if type == Type.START or type == Type.END:
 		return
