@@ -19,10 +19,34 @@ var checking = false setget setChecking
 var finalPath = false setget setFinalPath
 var tempPath = false setget setTempPath
 
+signal edited
 
 func _ready():
+	$Area2D.connect("input_event", self, "_on_Area2D_input_event")
 	if type == -1:
 		init(Type.PATH)
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if event is InputEventMouse:
+		if type != Type.START and type != Type.END:
+			var edit = 0
+			if Input.is_action_pressed("clear_path"):
+				edit += 1
+			if Input.is_action_pressed("block_path"):
+				edit -= 1
+				
+			if edit > 0:
+				if type != Type.PATH:
+					print("clear")
+					type = Type.PATH
+					updateColor()
+					emit_signal("edited")
+			elif edit < 0:
+				if type != Type.WALL:
+					print("block")
+					type = Type.WALL
+					updateColor()
+					emit_signal("edited")
 
 func init(newType):
 	type = newType

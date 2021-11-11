@@ -17,6 +17,7 @@ var checkingNode : Vector2
 
 var shownPath : Array = []
 
+signal edited
 
 func _ready():
 	pass
@@ -27,6 +28,7 @@ func init(newSize:Vector2, data:Array):
 		var row = []
 		for x in newSize.x:
 			var newNode = G2DNode.instance()
+			newNode.connect("edited", self, "_on_node_edited")
 			var type = data[y*newSize.x +x]
 			var pos = Vector2(x, y)
 			match type:
@@ -111,3 +113,7 @@ func reset():
 	for row in matrix:
 		for node in row:
 			node.reset()
+
+func _on_node_edited():
+	emit_signal("edited")
+

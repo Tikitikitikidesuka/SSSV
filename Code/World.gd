@@ -33,6 +33,7 @@ func _ready():
 	graph2D.setTileSize(tileSize)
 	graph2D.init(gridTiles, data)
 	graph2D.z_index = -1
+	graph2D.connect("edited", self, "_on_graph_edited")
 	
 	var windowSize = gridTiles * tileSize
 	
@@ -72,6 +73,11 @@ func _process(delta):
 		if timeCntr > timeInterval:
 			searcher.nextStep()
 			timeCntr = 0.0
+
+func _on_graph_edited():
+	graph2D.reset()
+	searcher.reset()
+	playing = false
 
 func _on_algorithm_change(newAlgorithm):
 	graph2D.reset()
