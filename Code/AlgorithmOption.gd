@@ -19,7 +19,8 @@ func update():
 		dir.list_dir_begin(true)
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not dir.current_is_dir():
+			if not dir.current_is_dir() and file_name.get_extension().find("gd") != -1:
+				print(file_name)
 				algorithms.append(file_name.get_basename())
 			file_name = dir.get_next()
 	else:
@@ -39,3 +40,7 @@ func setText(text:String):
 	if textSize.x > OS.window_size.x:
 		font.size = OS.window_size.x * font.size / textSize.x
 	$AlgorithmLabel.text = text
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		get_tree().quit() 
