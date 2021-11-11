@@ -9,7 +9,6 @@ signal algorithmChanged(algorithm_name)
 func _ready():
 	connect("item_selected", self, "_on_item_selected")
 	update()
-	selectAlgorithm(0)
 
 func _on_item_selected(index:int):
 	selectAlgorithm(index)
@@ -27,7 +26,7 @@ func update():
 		print("ERROR: The application files are corrupted")
 	
 	for algorithm in algorithms:
-		add_item(algorithm)
+		add_item(algorithm.replace("_", " "))
 
 func selectAlgorithm(index:int):
 	select(index)

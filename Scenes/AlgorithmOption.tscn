@@ -1,33 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Monoisome-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Code/AlgorithmOption.gd" type="Script" id=2]
-
-[sub_resource type="DynamicFont" id=3]
-
-[sub_resource type="ImageTexture" id=8]
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.486275, 1, 0.941176, 0.0901961 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.486275, 1, 0.941176, 0.184314 )
-
-[sub_resource type="Theme" id=7]
-OptionButton/colors/font_color = Color( 0, 0, 0, 0 )
-OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-OptionButton/colors/font_color_focus = Color( 0, 0, 0, 0 )
-OptionButton/colors/font_color_hover = Color( 0, 0, 0, 0 )
-OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 0 )
-OptionButton/fonts/font = SubResource( 3 )
-OptionButton/icons/arrow = SubResource( 8 )
-OptionButton/styles/focus = null
-OptionButton/styles/hover = SubResource( 4 )
-OptionButton/styles/normal = SubResource( 5 )
-OptionButton/styles/pressed = SubResource( 6 )
+[ext_resource path="res://Assets/OptionTheme.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
@@ -46,7 +21,7 @@ anchor_right = 1.0
 margin_bottom = 88.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme = SubResource( 7 )
+theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 2 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0

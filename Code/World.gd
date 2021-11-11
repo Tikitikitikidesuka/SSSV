@@ -12,17 +12,17 @@ var playing = false
 
 var menuHeight = 100
 var tileSize = 64
-var gridTiles = Vector2(8,9)
+var gridTiles = Vector2(9,9)
 var data = [
-	3, 3, 3, 3, 3, 3, 3, 3,
-	0, 2, 2, 2, 3, 2, 3, 3,
-	3, 2, 3, 2, 2, 2, 2, 3,
-	3, 2, 3, 3, 3, 3, 2, 3,
-	3, 2, 2, 3, 2, 2, 2, 3,
-	3, 3, 2, 2, 2, 3, 2, 3,
-	3, 3, 2, 3, 2, 2, 3, 3,
-	3, 3, 2, 2, 3, 2, 2, 1,
-	3, 3, 3, 3, 3, 3, 3, 3
+	3, 3, 3, 3, 3, 3, 3, 3, 3,
+	0, 2, 2, 2, 3, 2, 3, 3, 3,
+	3, 2, 3, 2, 2, 2, 2, 3, 3,
+	3, 2, 3, 3, 3, 3, 2, 3, 3,
+	3, 2, 2, 3, 2, 2, 2, 3, 3,
+	3, 3, 2, 2, 2, 3, 2, 3, 3,
+	3, 3, 2, 3, 2, 2, 3, 3, 3,
+	3, 3, 2, 2, 3, 2, 2, 1, 3,
+	3, 3, 3, 3, 3, 3, 3, 3, 3
 	]
 
 var graph2D
@@ -36,7 +36,11 @@ func _ready():
 	
 	var windowSize = gridTiles * tileSize
 	
+	
 	$AlgorithmOption.connect("algorithmChanged", self, "_on_algorithm_change")
+	searcher = Graph2DSearch.new(graph2D)
+	$AlgorithmOption.selectAlgorithm(0)
+	
 	var textSize = $AlgorithmOption.textSize
 	windowSize.y += textSize.y
 	
@@ -57,8 +61,6 @@ func _ready():
 	OS.window_size = windowSize
 	
 	add_child(graph2D)
-	searcher = Graph2DSearch.new(graph2D)
-	searcher.initAlgorithm(load(SEARCH_ALGORITHMS_DIR + algorithm + ".gd"))
 	print(windowSize)
 
 var timeCntr = 0.0
@@ -92,5 +94,6 @@ func _on_Menu_play():
 	playing = true
 
 func _on_Menu_next():
+	print("step")
 	if not playing:
 		searcher.nextStep()

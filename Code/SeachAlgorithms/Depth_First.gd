@@ -10,4 +10,3 @@ func expand(CP, path):
 		var pathDuplicate = path.duplicate()
 		pathDuplicate.addNode(neighbour)
 		CP.push_front(pathDuplicate)
-	print(CP)
