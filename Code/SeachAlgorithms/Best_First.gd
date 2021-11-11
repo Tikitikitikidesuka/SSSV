@@ -1,4 +1,4 @@
-extends "res://Code/SeachAlgorithms/BaseSearchAlgorithm.gd"
+extends "res://Code/BaseSearchAlgorithm.gd"
 
 
 func _init(newGraph2D).(newGraph2D):

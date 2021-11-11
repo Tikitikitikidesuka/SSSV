@@ -1,4 +1,4 @@
-extends "res://Code/SeachAlgorithms/BaseSearchAlgorithm.gd"
+extends "res://Code/BaseSearchAlgorithm.gd"
 
 
 # NOTE: Since every edge has a cost of 1 in this particular program, branch and

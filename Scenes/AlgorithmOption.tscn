@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Monoisome-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Code/AlgorithmOption.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+
+[sub_resource type="ImageTexture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.486275, 1, 0.941176, 0.0901961 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.486275, 1, 0.941176, 0.184314 )
+
+[sub_resource type="Theme" id=7]
+OptionButton/colors/font_color = Color( 0, 0, 0, 0 )
+OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+OptionButton/colors/font_color_focus = Color( 0, 0, 0, 0 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 0 )
+OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 0 )
+OptionButton/fonts/font = SubResource( 3 )
+OptionButton/icons/arrow = SubResource( 8 )
+OptionButton/styles/focus = null
+OptionButton/styles/hover = SubResource( 4 )
+OptionButton/styles/normal = SubResource( 5 )
+OptionButton/styles/pressed = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_color = Color( 1, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+use_filter = true
+extra_spacing_bottom = -4
+font_data = ExtResource( 1 )
+
+[node name="AlgorithmOption" type="OptionButton"]
+anchor_right = 1.0
+margin_bottom = 88.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Item 0"
+flat = true
+align = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AlgorithmLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 1, 0.952941, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 1 )
+text = "Algorithm Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

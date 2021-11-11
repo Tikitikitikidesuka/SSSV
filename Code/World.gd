@@ -6,7 +6,7 @@ const SEARCH_ALGORITHMS_DIR = "res://Code/SeachAlgorithms/"
 var Graph2D = preload("res://Scenes/Graph2D.tscn")
 var Graph2DSearch = preload("res://Code/Graph2DSearch.gd")
 
-var algorithm = "Branch_And_Bound"
+var algorithm = "Breadth_First"
 
 var playing = false
 
@@ -32,15 +32,12 @@ func _ready():
 	graph2D = Graph2D.instance()
 	graph2D.setTileSize(tileSize)
 	graph2D.init(gridTiles, data)
+	graph2D.z_index = -1
 	
 	var windowSize = gridTiles * tileSize
 	
-	var algorithmDisplayName = algorithm.replace("_", " ")
-	var font = $AlgorithmLabel.get_font("font")
-	var textSize = font.get_string_size(algorithmDisplayName)
-	if textSize.x > windowSize.x:
-		font.size = windowSize.x * font.size / textSize.x
-	$AlgorithmLabel.text = algorithmDisplayName
+	$AlgorithmOption.connect("algorithmChanged", self, "_on_algorithm_change")
+	var textSize = $AlgorithmOption.textSize
 	windowSize.y += textSize.y
 	
 	$Menu.set_position(Vector2(0, windowSize.y))
@@ -55,13 +52,14 @@ func _ready():
 	$Menu.connect("play", self, "_on_Menu_play")
 	$Menu.connect("next", self, "_on_Menu_next")
 	
-	graph2D.position.y += textSize.y
 	OS.window_resizable = false
+	graph2D.position.y += textSize.y
 	OS.window_size = windowSize
 	
 	add_child(graph2D)
 	searcher = Graph2DSearch.new(graph2D)
 	searcher.initAlgorithm(load(SEARCH_ALGORITHMS_DIR + algorithm + ".gd"))
+	print(windowSize)
 
 var timeCntr = 0.0
 var timeInterval = 0.1
@@ -72,6 +70,12 @@ func _process(delta):
 		if timeCntr > timeInterval:
 			searcher.nextStep()
 			timeCntr = 0.0
+
+func _on_algorithm_change(newAlgorithm):
+	graph2D.reset()
+	print(SEARCH_ALGORITHMS_DIR + newAlgorithm + ".gd")
+	searcher.initAlgorithm(load(SEARCH_ALGORITHMS_DIR + newAlgorithm + ".gd"))
+	playing = false
 
 func _on_Menu_reset():
 	print("reset")

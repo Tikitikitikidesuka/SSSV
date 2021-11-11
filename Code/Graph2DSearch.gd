@@ -37,6 +37,8 @@ func reset():
 	CP = []
 	CP.push_back(firstPath)
 	graph2D.getNode(graph2D.start).setVisited(true)
+	# Automatically run throught first step
+	nextStep();
 
 func nextStep():
 	if finished:
