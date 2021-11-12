@@ -25,6 +25,8 @@ func expand(CP, path):
 	pass
 ```
 
+![edit](docs/images/edit.gif)
+
 The `expand` method is the most important. It must modify CP so that it contains the paths that should be taken in next steps.
 
 `CP` contains the next posible paths.
