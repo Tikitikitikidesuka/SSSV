@@ -1,6 +1,19 @@
 # State Space Search Visualizer
 SSSV represents state space search algorithms in an easy to follow maze view.
 
+## Features
+-   **Algorithm selector** that shows all algorithms found in `Code/SearchAlgorithms`.
+
+    ![option menu](docs/images/option_menu.gif)
+
+-   **Maze editor** which allows the user to change any tile into a path or a wall.
+
+    ![edit](docs/images/edit.gif)
+
+-   **Precise controls** let the user step through each step of the algorithm.
+
+    ![controls](docs/images/control_menu.gif)
+
 ## Algorithms
 Currently SSSV ships with six different algorithms:
 -   **Breadth First**
@@ -10,7 +23,7 @@ Currently SSSV ships with six different algorithms:
 -   **Hill Climbing**
 -   **A\***
 
-Adding custom algorithms is simple. Just add the algorithm to the `Code/SearchAlgorithms` directory.
+Adding custom algorithms is simple. Just place the algorithm in the `Code/SearchAlgorithms` directory.
 
 Developing search algorithms:
 
@@ -24,19 +37,6 @@ func _init(newGraph2D).(newGraph2D):
 func expand(CP, path):
 	pass
 ```
-
-## Features
--   **Algorithm selector** that shows all algorithms found in `Code/SearchAlgorithms`.
-
-    ![option menu](docs/images/option_menu.gif)
-
--   **Maze editor** which allows the user to change any tile into a path or a wall.
-
-    ![edit](docs/images/edit.gif)
-
-Edit                          | Select Algorithm
-:----------------------------:|:-----------------------------:
-![edit](docs/images/edit.gif) | ![option menu](docs/images/option_menu.gif)
 
 The `expand` method is the most important. It must modify CP so that it contains the paths that should be taken in next steps.
 
