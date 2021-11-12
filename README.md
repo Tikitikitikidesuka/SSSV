@@ -1,8 +1,10 @@
 # State Space Search Visualizer
-SSSV represents state space search algorithms in an easy to follow maze view.
+
+SSSV makes understanding state space search algorithms intuitive. It represents a state space as a maze such that each state is a tile. The algorithm's goal is to go from the start tile, the inital state, to the end tile, the solution state.
 
 ## Features
--   **Algorithm selector** that shows all algorithms found in `Code/SearchAlgorithms`.
+
+-   **Algorithm selector** that lets the user choose among the assortment of algorithms found in `Code/SearchAlgorithms`.
 
     ![option menu](docs/images/option_menu.gif)
 
@@ -15,6 +17,7 @@ SSSV represents state space search algorithms in an easy to follow maze view.
     ![controls](docs/images/control_menu.gif)
 
 ## Algorithms
+
 Currently SSSV ships with six different algorithms:
 -   **Breadth First**
 -   **Depth First**
@@ -23,31 +26,5 @@ Currently SSSV ships with six different algorithms:
 -   **Hill Climbing**
 -   **A\***
 
-Adding custom algorithms is simple. Just place the algorithm in the `Code/SearchAlgorithms` directory.
-
-Developing search algorithms:
-
-Search algorithm structure:
-```gdscript
-extends "res://Code/BaseSearchAlgorithm.gd"
-
-func _init(newGraph2D).(newGraph2D):
-	pass
-
-func expand(CP, path):
-	pass
-```
-
-The `expand` method is the most important. It must modify CP so that it contains the paths that should be taken in next steps.
-
-`CP` contains the next posible paths.
-
-`path` contains the path being visited.
-
-The Graph2DSearch class will use the algorithm defined:
-1.  It initializes `CP` to contain a path containing only the start node.
-2.  While `CP` isn't empty:
-    1.  The first path of `CP` is extracted as `C`.
-    2.  If `C` reaches the end node, a solution has been found.
-    3.  If not, the algorithm's `expand` method is called with `CP` and `C` as parameters.
-3.  If `CP` is empty, there are no solutions to the problem.
+Adding custom algorithms is simple. The algorithm's `gd` file just needs to be placed in the `Code/SearchAlgorithms` directory.
+For a more detailed explanation on developing and adding custom algorithms, refer to the [custom algorithms documentation](docs/custom_algorithms.md).
