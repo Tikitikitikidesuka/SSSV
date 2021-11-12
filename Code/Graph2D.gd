@@ -104,6 +104,13 @@ func showPath(path, final = false):
 		for node in path:
 			getNode(node).finalPath = true
 
+func allRed():
+	for row in matrix:
+		for node in row:
+			if node.visited:
+				node.reset()
+				node.setChecking(true)
+
 func hidePath():
 	for node in shownPath:
 		getNode(node).tempPath = false

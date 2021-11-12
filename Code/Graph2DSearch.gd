@@ -18,7 +18,10 @@ func _ready():
 	pass
 
 func distance(from:Vector2, to:Vector2):
-	return (to - from).length()
+	#Manhattan distance:
+	return abs(to.x - from.x) + abs(to.y - from.y)
+	#Eclidean distance:
+	#return (to - from).length()
 
 func initAlgorithm(newAlgorithm):
 	# Save algorithm used
@@ -53,9 +56,13 @@ func nextStep():
 	graph2D.checkNode(lastNodePos)
 	algorithmInstance.expand(CP, path)
 	# Check if the algorithmInstance has finished
-	if lastNode.type == lastNode.Type.END or len(CP) == 0:
+	if lastNode.type == lastNode.Type.END: # Path found
 		graph2D.uncheckNode()
 		graph2D.showPath(path.getList(), true)
+		finished = true
+	elif len(CP) == 0: # Path not found
+		graph2D.uncheckNode()
+		graph2D.allRed()
 		finished = true
 	return not finished
 

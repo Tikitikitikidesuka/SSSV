@@ -17,7 +17,7 @@ func expand(CP, path):
 	bound(CP)
 
 # CP must be sorted by cost for bound to work
-# Iterates through CP and removes paths that lead to the same node as other with a higher cost
+# Iterates through CP and removes paths that lead to the same node as others but with higher cost
 func bound(CP:Array):
 	var reachedNodes = []
 	for pathIndex in range(len(CP)):

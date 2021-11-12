@@ -39,6 +39,6 @@ func printCP(CP):
 		print(str(path.getLastNode()) + " " + str(path.heuristic))
 
 # Godot does not provide append_array to front method on Array
-func appendFrontList(list, append):
+func appendToFront(list, append):
 	for index in range(len(append)-1, -1, -1):
 		list.push_front(append[index])

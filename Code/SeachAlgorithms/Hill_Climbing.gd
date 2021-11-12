@@ -13,4 +13,4 @@ func expand(CP, path):
 		newPath.heuristic = neighbour.distance_to(graph2D.end)
 		expansion.push_back(newPath)
 	orderPathsByHeuristic(expansion)
-	appendFrontList(CP, expansion)
+	appendToFront(CP, expansion)
