@@ -25,7 +25,18 @@ func expand(CP, path):
 	pass
 ```
 
-![edit](docs/images/edit.gif)
+## Features
+-   **Algorithm selector** that shows all algorithms found in `Code/SearchAlgorithms`.
+
+    ![option menu](docs/images/option_menu.gif)
+
+-   **Maze editor** which allows the user to change any tile into a path or a wall.
+
+    ![edit](docs/images/edit.gif)
+
+Edit                          | Select Algorithm
+:----------------------------:|:-----------------------------:
+![edit](docs/images/edit.gif) | ![option menu](docs/images/option_menu.gif)
 
 The `expand` method is the most important. It must modify CP so that it contains the paths that should be taken in next steps.
 
