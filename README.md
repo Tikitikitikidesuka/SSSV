@@ -28,3 +28,27 @@ Currently SSSV ships with six different algorithms:
 
 Adding custom algorithms is simple. The algorithm's `gd` file just needs to be placed in the `Code/SearchAlgorithms` directory.
 For a more detailed explanation on developing and adding custom algorithms, refer to the [custom algorithms documentation](docs/custom_algorithms.md).
+
+## Dependencies
+This project was made using the [Godot Game Engine](https://godotengine.org/). A free and open source game engine which I would very much recomend anyone to checkout. It's github page can be found [here](https://github.com/godotengine/godot).
+![https://github.com/godotengine/godot/raw/master/logo_outlined.svg]
+
+## Authors
+This project was developed by:
+* SneakyGerbil
+    * deesneakygerbil@gmail.com
+    * [Itch.io](https://sneakygerbil.itch.io)
+    * [YouTube](https://www.youtube.com/channel/UC4r_WrJ5SXjd10lFQdO3UyQ)
+    * [GitHub](https://github.com/SneakyGerbil)
+
+## License
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
