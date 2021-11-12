@@ -31,7 +31,11 @@ For a more detailed explanation on developing and adding custom algorithms, refe
 
 ## Dependencies
 This project was made using the [Godot Game Engine](https://godotengine.org/). A free and open source game engine which I would very much recomend anyone to checkout. It's github page can be found [here](https://github.com/godotengine/godot).
-![https://github.com/godotengine/godot/raw/master/logo_outlined.svg]
+<p align="center">
+  <a href="https://godotengine.org">
+    <img src="https://github.com/godotengine/godot/raw/master/logo_outlined.svg" width="400" alt="Godot Engine logo">
+  </a>
+</p>
 
 ## Authors
 This project was developed by:
