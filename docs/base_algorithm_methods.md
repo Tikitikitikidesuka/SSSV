@@ -1,6 +1,6 @@
 # BaseSearchAlgorithm Class
 
-The `BaseSearchAlgorithm` class is extended by all search algorithms. It includes usefull methods common to most search algorithms.
+The `BaseSearchAlgorithm` class is extended by all search algorithms. It includes useful methods common to most search algorithms.
 
 ## Methods
 

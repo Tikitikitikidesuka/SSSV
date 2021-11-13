@@ -12,7 +12,7 @@ SSSV makes understanding state space search algorithms intuitive. It represents 
 
     ![edit](docs/images/edit.gif)
 
--   **Precise controls** let the user step through each step of the algorithm.
+-   **Precise controls** let the user step incrementally through the search algorithm.
 
     ![controls](docs/images/control_menu.gif)
 
@@ -30,7 +30,7 @@ Adding custom algorithms is simple. The algorithm's `gd` file just needs to be p
 For a more detailed explanation on developing and adding custom algorithms, refer to the [custom algorithms documentation](docs/custom_algorithms.md).
 
 ## Dependencies
-This project was made using the [Godot Game Engine](https://godotengine.org/). A free and open source game engine which I would very much recomend anyone to checkout. It's github page can be found [here](https://github.com/godotengine/godot).
+This project was made using the [Godot Game Engine](https://godotengine.org/). A free and open source game engine, I would very much recommend checking out. Its github page can be found [here](https://github.com/godotengine/godot).
 <p align="center">
   <a href="https://godotengine.org">
     <img src="https://github.com/godotengine/godot/raw/master/logo_outlined.svg" width="400" alt="Godot Engine logo">

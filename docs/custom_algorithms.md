@@ -1,6 +1,6 @@
 # Developing Custom Algorithms
 
-A [custom algorithm `gdscript` file containing the basic search algorithm structure](search_algorithm.gd) can be found among the documentation. It's code is as follows:
+A [search algorithm template](search_algorithm.gd) containing the basic structure is provided within the documentation. Its code is as follows:
 ```gdscript
 # Extend BaseSearchAlgorithm to have useful methods
 extends "res://Code/BaseSearchAlgorithm.gd"
@@ -19,14 +19,14 @@ func expand(CP, path):
 	pass
 ```
 
-The algorithm extends the [`BaseSearchAlgorithm.gd`](base_algorithm_methods.md), which contains some [very useful methods](base_algorithm_methods.md) such as ordering the path list, `CP`, by cost or heuristic.
+The algorithm extends [`BaseSearchAlgorithm.gd`](base_algorithm_methods.md), which contains some [very useful methods](base_algorithm_methods.md) such as ordering the path list, `CP`, by cost or heuristic.
 
 The `expand` method is the most important. It must modify CP so that it contains the paths that should be considered in next steps.
 -   `CP` contains all the paths to consider in future steps.
 -   `path` contains the path being checked in the current expand method call.
 
 The `Graph2D` methods `getUnvisitedNeighbours(pos:Vector2)` and `getAllNeighbours(pos:Vector2)` are crucial to expand the path buffer. These methods return a list of the unvisited or all neighbours, respectively, of the tiles located at `pos` on the `Graph2D`.
-> NOTE: Since paths are objects, they are passed by reference. To add a new path to `CP` without editing the existing ones, neighbours shoud be added to a clone of the checked path. A path can be cloned with it's `duplicate()` method.
+> NOTE: Since paths are objects, they are passed by reference. To add a new path to `CP` without editing the existing ones, neighbours shoud be added to a clone of the checked path. A path can be cloned with its `duplicate()` method.
 
 ## Algorithm Usage
 The `Graph2DSearch` class will use the algorithm defined:
