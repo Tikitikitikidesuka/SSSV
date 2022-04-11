@@ -39,11 +39,11 @@ This project was made using the [Godot Game Engine](https://godotengine.org/). A
 
 ## Authors
 This project was developed by:
-* SneakyGerbil
+* Tikitikitikidesuka
     * deesneakygerbil@gmail.com
-    * [Itch.io](https://sneakygerbil.itch.io)
+    * [Itch.io](https://tikitikitikidesuka.itch.io)
     * [YouTube](https://www.youtube.com/channel/UC4r_WrJ5SXjd10lFQdO3UyQ)
-    * [GitHub](https://github.com/SneakyGerbil)
+    * [GitHub](https://github.com/Tikitikitikidesuka)
 
 ## License
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
